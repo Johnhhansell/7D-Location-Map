@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8554b409664bf897a4a1546ab8104ee2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">DPWQZ25YFSXJ-989548898-118215</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">c3379511-eeda-4f86-9331-e4f0a1cb10d9</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://tradepostpartners.sharepoint.com/sites/Fileshare/_layouts/15/DocIdRedir.aspx?ID=DPWQZ25YFSXJ-989548898-118215, DPWQZ25YFSXJ-989548898-118215</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; left: 50px; width: 200px; height: 130px; 
+                background-color: white; z-index:9999; font-size:13px;
+                border:2px solid grey; padding: 10px; overflow: hidden;">
+    <b>Legend</b><br>
+    <i class="fa fa-map-marker" style="color:red"></i> Location Marker (7D)<br>
+    <i class="fa fa-circle" style="color:black"></i> Current Footprint (93 miles radius)<br>
+    <i class="fa fa-circle" style="color:green"></i> Prospective Footprint (280 miles radius)<br>
+    </div>
+    
+    
+            <div class="folium-map" id="map_8554b409664bf897a4a1546ab8104ee2" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8554b409664bf897a4a1546ab8104ee2 = L.map(
+                "map_8554b409664bf897a4a1546ab8104ee2",
+                {
+                    center: [39.8283, -98.5795],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    zoomDelta: 0.5,
+                }
+            );
+            L.control.scale().addTo(map_8554b409664bf897a4a1546ab8104ee2);
+
+            
+
+        
+    
+            var tile_layer_6d6463c179f82eead8ab9cd8af02efd0 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_6d6463c179f82eead8ab9cd8af02efd0.addTo(map_8554b409664bf897a4a1546ab8104ee2);
+        
+    
+            var feature_group_6b960b63052252ffbba4a0ad2fc3c2fa = L.featureGroup(
+                {}
+            );
+        
+    
+            var circle_aa40da9fa4e4a7f5bc22a84dbd4d1e8a = L.circle(
+                [41.664, -72.646],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_c42736d7757e726b65c02c9fecdfe9b1 = L.circle(
+                [30.51, -87.217],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_aac595d51b2cb13a6b813ee1daf57447 = L.circle(
+                [26.19, -80.287],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_79b0c2d448ac5319a22a55210b112174 = L.circle(
+                [38.297, -86.955],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_72f7cbe156899fab7d47d6d7088effad = L.circle(
+                [39.646, -77.717],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_4f87f176f65055d8526f055a51aa2ca7 = L.circle(
+                [43.23, -76.306],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_1e2290542605f83ebc5148e3f6f1c53a = L.circle(
+                [40.48, -78.555],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_2b1720df31a107613195063ab2a74e74 = L.circle(
+                [40.362, -76.182],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_c3c7f4478135af7730525ca002a7495c = L.circle(
+                [41.409, -75.662],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            var circle_01d21e716bd8f0eababbb3e9d056c965 = L.circle(
+                [34.787, -82.462],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 150000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b960b63052252ffbba4a0ad2fc3c2fa);
+        
+    
+            feature_group_6b960b63052252ffbba4a0ad2fc3c2fa.addTo(map_8554b409664bf897a4a1546ab8104ee2);
+        
+    
+            var feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5 = L.featureGroup(
+                {}
+            );
+        
+    
+            var circle_86c0a2f2ff88a1f4aac6f8b3d89a2b1b = L.circle(
+                [41.664, -72.646],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_4353d45ae1790de20b6f76a6bdc2caf2 = L.circle(
+                [30.51, -87.217],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_04b83105a429a64922be9b311422e7df = L.circle(
+                [26.19, -80.287],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_bfa53a735805e94b454df21a8a738b5c = L.circle(
+                [38.297, -86.955],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_a43b66bf290c927b77347f3e29408593 = L.circle(
+                [39.646, -77.717],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_d6a564b81df12dccf3947c3210b07e88 = L.circle(
+                [43.23, -76.306],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_29005c515fcf2f151105f02aab7b48bc = L.circle(
+                [40.48, -78.555],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_418e76a54a6ec2a185a1befe59744c0d = L.circle(
+                [40.362, -76.182],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_d9c2a767daaf02850ec06aab5edae3f4 = L.circle(
+                [41.409, -75.662],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var circle_4c164ea4084aadfc6f52ef5df77e6ab7 = L.circle(
+                [34.787, -82.462],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 450000, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5);
+        
+    
+            var feature_group_259654c9f693f7455923ac1d32b82c20 = L.featureGroup(
+                {}
+            );
+        
+    
+            var marker_8927d261bc8f6fb3370264dd47e2e36d = L.marker(
+                [41.664, -72.646],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_7b7c4e8ba8015699c2e900c6713a1d61 = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_8927d261bc8f6fb3370264dd47e2e36d.setIcon(custom_icon_7b7c4e8ba8015699c2e900c6713a1d61);
+        
+    
+        var popup_be6c22c0b29c684fe170fa3bb1e586df = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_04a354db8fba24240a11663c3d82a995 = $(`<div id="html_04a354db8fba24240a11663c3d82a995" style="width: 100.0%; height: 100.0%;">145 Dividend Road, Rocky Hill, CT</div>`)[0];
+                popup_be6c22c0b29c684fe170fa3bb1e586df.setContent(html_04a354db8fba24240a11663c3d82a995);
+            
+        
+
+        marker_8927d261bc8f6fb3370264dd47e2e36d.bindPopup(popup_be6c22c0b29c684fe170fa3bb1e586df)
+        ;
+
+        
+    
+    
+            var marker_b10e747886a818f694ad8d6db69e767f = L.marker(
+                [30.51, -87.217],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_223149bfc39d7e3b268794db77769f7a = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_b10e747886a818f694ad8d6db69e767f.setIcon(custom_icon_223149bfc39d7e3b268794db77769f7a);
+        
+    
+        var popup_250627d5a3e07fa70ef5962fea6ad825 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8699a9c6309788f0901b6c408a3f011d = $(`<div id="html_8699a9c6309788f0901b6c408a3f011d" style="width: 100.0%; height: 100.0%;">7282 Plantation Road Suite 403, Pensacola, FL</div>`)[0];
+                popup_250627d5a3e07fa70ef5962fea6ad825.setContent(html_8699a9c6309788f0901b6c408a3f011d);
+            
+        
+
+        marker_b10e747886a818f694ad8d6db69e767f.bindPopup(popup_250627d5a3e07fa70ef5962fea6ad825)
+        ;
+
+        
+    
+    
+            var marker_ef3aff86e26429c7bc32950835ad1f07 = L.marker(
+                [26.19, -80.287],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_a187932a204a4d5f6e06e7292ebc6812 = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_ef3aff86e26429c7bc32950835ad1f07.setIcon(custom_icon_a187932a204a4d5f6e06e7292ebc6812);
+        
+    
+        var popup_feb0d7a3ce4bea353662f1f430bcdb63 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9c1132a4f0b2db1d5ae80fa6db5c817b = $(`<div id="html_9c1132a4f0b2db1d5ae80fa6db5c817b" style="width: 100.0%; height: 100.0%;">4891 NW 103rd Ave Suite #17, Sunrise, FL</div>`)[0];
+                popup_feb0d7a3ce4bea353662f1f430bcdb63.setContent(html_9c1132a4f0b2db1d5ae80fa6db5c817b);
+            
+        
+
+        marker_ef3aff86e26429c7bc32950835ad1f07.bindPopup(popup_feb0d7a3ce4bea353662f1f430bcdb63)
+        ;
+
+        
+    
+    
+            var marker_4247250c77451dc76027a89f0582e155 = L.marker(
+                [38.297, -86.955],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_2a83a5b3951ce56255f17eb8cf80463a = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_4247250c77451dc76027a89f0582e155.setIcon(custom_icon_2a83a5b3951ce56255f17eb8cf80463a);
+        
+    
+        var popup_ca86099de77515851d0ac3acd03b42cc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b824c85998577c487ec86bfce80c6651 = $(`<div id="html_b824c85998577c487ec86bfce80c6651" style="width: 100.0%; height: 100.0%;">415 West 19th Street, Huntingburg, IN</div>`)[0];
+                popup_ca86099de77515851d0ac3acd03b42cc.setContent(html_b824c85998577c487ec86bfce80c6651);
+            
+        
+
+        marker_4247250c77451dc76027a89f0582e155.bindPopup(popup_ca86099de77515851d0ac3acd03b42cc)
+        ;
+
+        
+    
+    
+            var marker_7bdb3b92c39caf9a4d5c439211b01e86 = L.marker(
+                [39.646, -77.717],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_22b94bfdc3c43de9efc0ea142e407b11 = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_7bdb3b92c39caf9a4d5c439211b01e86.setIcon(custom_icon_22b94bfdc3c43de9efc0ea142e407b11);
+        
+    
+        var popup_7c99c91a6e322993f7105132f9cfb31c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_04bff664f7abb49fdda078af45851cdd = $(`<div id="html_04bff664f7abb49fdda078af45851cdd" style="width: 100.0%; height: 100.0%;">625 N. Prospect Street, Hagerstown, MD</div>`)[0];
+                popup_7c99c91a6e322993f7105132f9cfb31c.setContent(html_04bff664f7abb49fdda078af45851cdd);
+            
+        
+
+        marker_7bdb3b92c39caf9a4d5c439211b01e86.bindPopup(popup_7c99c91a6e322993f7105132f9cfb31c)
+        ;
+
+        
+    
+    
+            var marker_b2b3e1c06d7f149524c11961ef7e0a73 = L.marker(
+                [43.23, -76.306],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_57774bf126ae0b5db403e4931b2bdf21 = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_b2b3e1c06d7f149524c11961ef7e0a73.setIcon(custom_icon_57774bf126ae0b5db403e4931b2bdf21);
+        
+    
+        var popup_329a8bd627789464909e5f7fc7500cdd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_366bf2c8f735b42ab93cc3b68e625c3c = $(`<div id="html_366bf2c8f735b42ab93cc3b68e625c3c" style="width: 100.0%; height: 100.0%;">104 County Route 57, Phoenix, NY</div>`)[0];
+                popup_329a8bd627789464909e5f7fc7500cdd.setContent(html_366bf2c8f735b42ab93cc3b68e625c3c);
+            
+        
+
+        marker_b2b3e1c06d7f149524c11961ef7e0a73.bindPopup(popup_329a8bd627789464909e5f7fc7500cdd)
+        ;
+
+        
+    
+    
+            var marker_6acd0257411588f4d71b147c944d2764 = L.marker(
+                [40.48, -78.555],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_dc39ad22718f947847c81bbd391c706d = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_6acd0257411588f4d71b147c944d2764.setIcon(custom_icon_dc39ad22718f947847c81bbd391c706d);
+        
+    
+        var popup_332d9bcb739ed58d10df77b9b3acb602 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_03234456d9648b1b085955b06147732a = $(`<div id="html_03234456d9648b1b085955b06147732a" style="width: 100.0%; height: 100.0%;">302 St. Thomas St., P.O. Box 67, Gallitzen, PA</div>`)[0];
+                popup_332d9bcb739ed58d10df77b9b3acb602.setContent(html_03234456d9648b1b085955b06147732a);
+            
+        
+
+        marker_6acd0257411588f4d71b147c944d2764.bindPopup(popup_332d9bcb739ed58d10df77b9b3acb602)
+        ;
+
+        
+    
+    
+            var marker_4e252e3267c7853e779f405d42ed3df9 = L.marker(
+                [40.362, -76.182],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_ac74f8dc1f1b86caa9556e6b90ed8b2b = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_4e252e3267c7853e779f405d42ed3df9.setIcon(custom_icon_ac74f8dc1f1b86caa9556e6b90ed8b2b);
+        
+    
+        var popup_93ac98ac5d509275aedb90f84bb5433d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fa0aea0ecb9b4e48d5d58790fdb3d8fd = $(`<div id="html_fa0aea0ecb9b4e48d5d58790fdb3d8fd" style="width: 100.0%; height: 100.0%;">415 East Memorial Boulevard, Womelsdorf, PA</div>`)[0];
+                popup_93ac98ac5d509275aedb90f84bb5433d.setContent(html_fa0aea0ecb9b4e48d5d58790fdb3d8fd);
+            
+        
+
+        marker_4e252e3267c7853e779f405d42ed3df9.bindPopup(popup_93ac98ac5d509275aedb90f84bb5433d)
+        ;
+
+        
+    
+    
+            var marker_1ba9d370abb3d39db5834d9b5e17d1f4 = L.marker(
+                [41.409, -75.662],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_46f2e228dd4a1d8853f750d1810ee55e = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_1ba9d370abb3d39db5834d9b5e17d1f4.setIcon(custom_icon_46f2e228dd4a1d8853f750d1810ee55e);
+        
+    
+        var popup_f12cc8c9168b97e4095d5bbaed748b69 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_71989c6020aedd23999801753b03d84f = $(`<div id="html_71989c6020aedd23999801753b03d84f" style="width: 100.0%; height: 100.0%;">650 North South Road, Scranton, PA</div>`)[0];
+                popup_f12cc8c9168b97e4095d5bbaed748b69.setContent(html_71989c6020aedd23999801753b03d84f);
+            
+        
+
+        marker_1ba9d370abb3d39db5834d9b5e17d1f4.bindPopup(popup_f12cc8c9168b97e4095d5bbaed748b69)
+        ;
+
+        
+    
+    
+            var marker_2ca0b9a67f786fe8822d3df08736249c = L.marker(
+                [34.787, -82.462],
+                {}
+            ).addTo(feature_group_259654c9f693f7455923ac1d32b82c20);
+        
+    
+        var custom_icon_3e01c7d8817a32935130cc0361815a11 = L.icon({"iconSize": [42, 42], "iconUrl": "data:image/svg+xml;base64,PHN2ZyBiYXNlUHJvZmlsZT0iZnVsbCIgaGVpZ2h0PSI0MiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNDIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6ZXY9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEveG1sLWV2ZW50cyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIyMSIgZmlsbD0id2hpdGUiIHI9IjE0LjciIC8+PHRleHQgZmlsbD0icmVkIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjEiIHk9IjI1Ij43RDwvdGV4dD48L3N2Zz4="});
+        marker_2ca0b9a67f786fe8822d3df08736249c.setIcon(custom_icon_3e01c7d8817a32935130cc0361815a11);
+        
+    
+        var popup_fa8cf3d92a6588af64fb8a0c0b1553c4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1a0f8006fcaa3b17b2c1bf5e6255b8b7 = $(`<div id="html_1a0f8006fcaa3b17b2c1bf5e6255b8b7" style="width: 100.0%; height: 100.0%;">101 Boozer Road, Piedmont, SC</div>`)[0];
+                popup_fa8cf3d92a6588af64fb8a0c0b1553c4.setContent(html_1a0f8006fcaa3b17b2c1bf5e6255b8b7);
+            
+        
+
+        marker_2ca0b9a67f786fe8822d3df08736249c.bindPopup(popup_fa8cf3d92a6588af64fb8a0c0b1553c4)
+        ;
+
+        
+    
+    
+            feature_group_259654c9f693f7455923ac1d32b82c20.addTo(map_8554b409664bf897a4a1546ab8104ee2);
+        
+    
+            var layer_control_a0544f06c644ed0114b79cb4c21ca10e_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_6d6463c179f82eead8ab9cd8af02efd0,
+                },
+                overlays :  {
+                    "Current Footprint" : feature_group_6b960b63052252ffbba4a0ad2fc3c2fa,
+                    "Prospective Footprint" : feature_group_f4a0ee1207f45205f3dbc79b42dbd6e5,
+                    "Locations" : feature_group_259654c9f693f7455923ac1d32b82c20,
+                },
+            };
+            let layer_control_a0544f06c644ed0114b79cb4c21ca10e = L.control.layers(
+                layer_control_a0544f06c644ed0114b79cb4c21ca10e_layers.base_layers,
+                layer_control_a0544f06c644ed0114b79cb4c21ca10e_layers.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_8554b409664bf897a4a1546ab8104ee2);
+
+        
+</script>
+</html>
